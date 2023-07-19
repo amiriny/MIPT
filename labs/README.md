@@ -6,5 +6,5 @@
 
 [Справочник по tex](http://grammarware.net/text/syutkin/TextInLaTeX.pdf)
 
-Удобное создание или перевод таблиц](https://tableconvert.com)
+[Удобное создание или перевод таблиц из excel/csv в tex формат](https://tableconvert.com)
 
