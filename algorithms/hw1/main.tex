@@ -1,0 +1,120 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage{cmap}          % поиск в PDF
+\usepackage{mathtext}         % русские буквы в формулах
+\usepackage[T2A]{fontenc}      % кодировка
+\usepackage[utf8]{inputenc}      % кодировка исходного текста
+\usepackage[english,russian]{babel}  % локализация и переносы
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{amsfonts,amssymb,amsthm,mathtools} % AMS
+\usepackage{amsmath}
+\usepackage{icomma} % "Умная" запятая: $0,2$ --- число, $0, 2$
+\usepackage{graphicx}
+\usepackage{wrapfig} % картинка в тектсе
+\usepackage{caption} % убирается номер у подписей caption*{}
+\usepackage{csquotes} % цитаты
+\usepackage{multirow} % для жестких таблиц
+\usepackage{hhline}
+\usepackage{indentfirst} % абзацный отступ после section
+\usepackage{epigraph} % эпиграф
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage[export]{adjustbox}
+\usepackage{tabularx}
+\usepackage{float}
+\usepackage{longtable}
+
+
+
+\title{\textbf{Основные алгоритмы. Домашняя работа 1 неделя}}
+\author{Зайнуллин Амир}
+
+
+\begin{document}
+\maketitle
+
+\section*{Задача №1}
+\begin{enumerate}
+  \item Алгоритм выведет последовательность простых чисел от $2$ до $n$. При каждой процедуре алгоритм записывает 1 в каждую ячейку, 
+  индекс которой кратен k. Следовательно, следующие процедуры будут игнорировать данные ячейки. Т.к $k > 1$ то значит будет игнорировать все составные индексы, тогда будет выводит все простые индексы.
+  \item Рассмотрим одну процедуру. Сначала алгоритм доходит до первой нулевой ячейки от $2$ до $k$ индекса. Далее алгоритм идет по массиву дальше с шагом один и через каждые k клеток записывает в ячейку единицу Т.е за одну процедуру алгоритм обходит весь массив размером $n - 1$. Количество выполненных процедур - сколько простых чисел вывел. Допустим их количество $p$. Тогда временная сложность равна $(n - 1) \cdot p$. Выполняется $1 \leq p \leq  n$. Тогда оценки получаются равными $\Omega(n) \text{ и } O(n^2)$.
+  \item Да, т.к временная сложность $O(n^2)$.
+\end{enumerate}
+
+\section*{Задача №2}
+\begin{enumerate}
+  \item Допустим, да. Тогда $\exists C > 0, \exists n_0 \in \mathbb{N}: \forall n > n_0 \quad n \leqslant C \cdot n logn$ \\
+  $\exists N \in \mathbb{N}: \forall n > N \quad 1 \leqslant log(n) \quad$  Знаем, что такое $N$ существует\\
+  $\exists N \in \mathbb{N}: \forall n > N \quad n \leqslant nlog(n)$ \\
+  $\exists C = 1: \forall n > N \quad n \leqslant n log(n)$ \\ 
+  Верно
+  \item Допустим, да. Тогда $\exists C > 0, \exists n_0 \in \mathbb{N}: \forall n > n_0 \quad nlog(n) \geqslant C \cdot n^{1 + \varepsilon}$ \\
+  $\exists C > 0, \exists n_0 \in \mathbb{N}: \forall n > n_0 \quad \dfrac{log(n)}{C} \geqslant n^{\varepsilon}$ \\
+  $\exists C > 0: \forall n > 1 \quad ln\left[\dfrac{log(n)}{C}\right] \geqslant {\varepsilon} \cdot ln(n)$ \\
+  $\varepsilon \leqslant ln\left[\dfrac{log(n)}{C}\right] \cdot \dfrac{1}{ln(n)}$ \\
+  Видно, что числитель возрастает медленне чем знаменатель, т.к числитель порядка ln(log(n)), а знаменатель ln(n)). Значит правая часть будет убывать. Тогда неверно.
+\end{enumerate}
+
+\section*{Задача №3}
+  $f(n) = O(n^2)$, $g(n) = \Omega(1)$, $g(n) = O(n)$, $h(n) = \dfrac{f(n)}{g(n)}$ \\
+  $\exists C_1 > 0, \exists N_1 \in \mathbb{N}: \forall n > N_1 \quad f(n) \leqslant  C_1 \cdot n^2$ \\
+  $\exists C_2 > 0, \exists N_2 \in \mathbb{N}: \forall n > N_2 \quad g(n) \geqslant   C_2$ \\
+  $\exists C_3 > 0, \exists N_3 \in \mathbb{N}: \forall n > N_3 \quad g(n) \leqslant  C_3 \cdot n$ \\
+  \begin{enumerate}
+    \item Если $f(n) = nlogn \quad g(n) = 1$ \\
+    $h(n) = nlogn = \Theta(n log(n))$ \\
+    Значит такое возможно
+    \item $h(n) = \dfrac{f(n)}{g(n)} \leqslant \dfrac{C_1n^2}{C_2}$ Значит $h(n) = O(n^2)$. Значит пункт б невозможен \\
+    \item Верхнюю оценку мы дали. Нижняя оценку не можем, тк не знаем нижней оценки для $f(n)$.
+
+  \end{enumerate}
+
+\section*{Задача №4}
+  $$\sum ^{n}_{i=1}i^{3/2}\leqslant \sum ^{n}_{i=1}\sqrt{i^{3}+2i+5}\leqslant \sum ^{n}_{i=1}\sqrt{i^{3}+6i^3+12i+8}$$
+  $$\sum ^{n}_{i=1}i^{3/2}\leqslant \sum ^{n}_{i=1}\sqrt{i^{3}+2i+5}\leqslant \sum ^{n}_{i=1}\sqrt{(i+2)^3}$$
+  $$\sum ^{n}_{i=1}i^{3/2}\leqslant \sum ^{n}_{i=1}\sqrt{i^{3}+2i+5}\leqslant \sum ^{n}_{i=1}(i+2)^{3/2}$$
+  Слагаемое слева из семинарской задачи равно $\Theta(n^{5/2})$. Аналогично справа $\Theta((n+2)^{5/2}) = \Theta(n^{5/2})$
+  Тогда ответ $\Theta(n^{5/2})$.
+
+\section*{Задача №5}
+      $$g(n) = \Theta(n^{100}) \text{, значит } \exists C_1 \text{, } C2 > 0, \exists N \in \mathbb{N}: \forall n > N \quad C_1 \cdot n^{100} \leqslant g(n) \leqslant  C_2 \cdot n^{100}$$
+      $$(3 + o(1))^n + C_1 n^{100} \leqslant (3 + o(1))^n + \Theta(n^{100}) \leqslant (3 + o(1))^n + C_2 n^{100}$$
+      $$log \left[(3 + o(1))^n\right] = n \cdot \left(3 + o(1)\right)$$
+      $$log \left(Cn^{100}\right) = 100 \cdot log(Cn)$$ \\
+      Так как $log(n) = O(n)$, то вторым слагаемым можно будет пренебречь.
+      $\log f(n) = n \cdot (3 + o(1)) = \Theta(n)$ Верно
+    
+\section*{Задача №7}
+  $$7 \equiv 7 \quad mod(167)$$
+  $$7^3 \equiv 9 \quad mod(167)$$
+  $$7^6 \equiv 81 \quad mod(167)$$
+  $$7^{12} \equiv 48 \quad mod(167)$$
+  $$7 \cdot 7^{12} \equiv 2 \quad mod(167)$$
+  Ответ: 2
+
+\section*{Задача №8}
+\begin{enumerate}
+  \item 
+  $T_{1}\left( 1\right) =T_{1}\left( 2\right) =T_{1}\left( 3\right) =1$ \\
+  $T_{2}\left( 1\right) =T_{2}\left( 2\right) =T_{2}\left( 3\right) =1 $ \\
+  $T_{1}\left( n\right) =T_{1}\left( n-1\right) +cn$ \\
+  $T_{1}\left( 4\right) =T_{1}\left( 3\right) +4c=1+4c$ \\ 
+  $T_{1}\left( 5\right) =T_{1}\left( 4\right) +5c=1+4c+5c$ \\
+  $T_{1}\left( n\right) =1+4c+5c+\ldots +cn=1+c\left( 4+5+\ldots +n\right)$ \\
+  $=1+c\cdot \left[ \dfrac{n\left( n+1\right) }{2}-1-2-3\right] =\theta \left( n^{2}\right)$
+  \item
+    \begin{align*}
+    &  T_{2}\left( n\right) =T_{1}\left( n-1\right) +4T_{2}\left( n-3\right) \\
+    &  k^{3}=k^{2}+4 \\
+    &  k^{3}-k^{2}-4=0 \\
+    &  \left( k-2\right) \left( k^{2}+k+2\right) =0 \\
+    &  k=2,k=k_{2},k=k_{3} \\
+    &  T_{2}\left( n\right) =B_{1}\cdot 2^{n}+B_{2}\cdot k_{2}^{n}+B_{3}\cdot k_{3}^{n} \\
+    &  \log \left( T_{2}\right) =\theta \left( n\right)
+    \end{align*}
+
+\end{enumerate}
+
+  
+
+\end{document}

@@ -1,0 +1,108 @@
+\documentclass{article}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}   
+\usepackage[english, russian]{babel}
+
+% Set page size and margins
+% Replace `letterpaper' with`a4paper' for UK/EU standard size
+\usepackage[a4paper,top=2cm,bottom=2cm,left=2cm,right=2cm,marginparwidth=1.75cm]{geometry}
+
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+% \usepackage[left=1cm,right=1cm,top=1cm,bottom=1cm]{geometry}
+\usepackage{hyperref}
+\usepackage{seqsplit}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{enumitem}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{algorithmicx}
+\usepackage{mathalfa}
+\usepackage{mathrsfs}
+\usepackage{dsfont}
+\usepackage{caption,subcaption}
+\usepackage{wrapfig}
+\usepackage[stable]{footmisc}
+\usepackage{indentfirst}
+\usepackage{rotating}
+\usepackage{pdflscape}
+
+\usepackage{MnSymbol,wasysym}
+
+
+\begin{document}
+
+\title{\textbf{Основные алгоритмы. Домашняя работа 8 неделя}}
+
+
+\author{Зайнуллин Амир}
+\maketitle
+
+\section*{Задача №1}
+По памяти $\Theta \left(\dfrac{\pi}{\rho} \cdot \dfrac{\sqrt{w^2 + h^2}}{d}\right)$
+
+Для времени сначала мы для каждой точки должны отметить $\dfrac{2 \pi}{\rho}$ точек, а потом пройтись по всему массиву чтобы найти максимум. 
+По времени $\Theta \left(\dfrac{\pi}{\rho} \cdot \dfrac{\sqrt{w^2 + h^2}}{d} + n \cdot \dfrac{2\pi}{\rho}\right)$
+\section*{Задача №2}
+
+Ошибка для одной точки равна 
+$$ \varepsilon_i = x_i - a \sin(t_i) $$
+
+Сумма квадратов ошибок
+$$ E = \sum_{i = 1}^{n} \varepsilon_i^2 = \sum_{i = 1}^{n}(x_i - a \sin(t_i))^2 $$
+
+Найдем минимум с помощью производной 
+$$\frac{dE}{da} = -2 \sum_{i = 1}^{n} (x_i - a \sin(t_i)) \sin(t_i) = 0 $$
+
+$$a\sum_{i=1}^{n}\sin^2(t_i) = \sum_{i=1}^{n}x_i\sin(t_i)$$
+
+$$\hat{a} = \frac{\sum_{i=1}^{n}x_i\sin(t_i)}{\sum_{i=1}^{n}\sin^2(t_i)} $$
+
+\section*{Задача №3} 
+
+Ошибка для одной точки равна 
+$$ \varepsilon_i = a \sin(t_i) + b - x_i $$
+
+Сумма квадратов ошибок
+$$ E = \sum_{i = 1}^{n} \varepsilon_i^2 = \sum_{i = 1}^{n}(a \sin(t_i) + b - x_i)^2 $$
+
+Найдем минимум с помощью частных производных 
+$$\frac{\partial E}{\partial a} = 2 \sum_{i = 1}^{n} (a \sin(t_i) + b - x_i) \sin(t_i) = 0 $$
+$$\frac{\partial E}{\partial b} = 2 \sum_{i = 1}^{n} (a \sin(t_i) + b - x_i) = 0 $$
+
+Введем обозначения 
+$$ \sum_{i = 1}^{n} \sin(t_i) = S $$
+$$ \sum_{i = 1}^{n} \sin^2(t_i) = S^2 $$
+$$ \sum_{i = 1}^{n} x_i = X $$
+$$ \sum_{i = 1}^{n} x_i \sin(t_i) = SX $$
+
+Тогда получим следующую систему уравнений
+
+$$
+\begin{cases}
+    a S^2 + b S - SX = 0 \\
+    a S + bn - X = 0
+\end{cases}
+$$
+
+Решая, получим 
+
+$$
+\begin{cases}
+    \hat{a} = \dfrac{nSX - (S)(X)}{n S^2 - (S) ^ 2} \\
+    \hat{b} = \dfrac{S^2 (X) - n SX (S)}{nS^2 - (S) ^ 2}
+\end{cases}
+$$
+
+\section*{Задача №4} 
+$\alpha^n$ - вероятность во все разы выбрать плохие точки, значит вероятность успеха равна
+$$ P = 1 - \alpha^m $$
+$$ \alpha = \sqrt[m]{1 - p} $$
+
+\section*{Задача №5} 
+Для сферы $k = 4$, тогда $\alpha^4$ - вероятность выбрать хорошие точки. Так как в секунду работает $M$ раз, то 
+$\alpha ^{4M}$ - искомая вероятность.
+\end{document}

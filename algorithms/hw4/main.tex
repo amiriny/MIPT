@@ -1,0 +1,88 @@
+\documentclass{article}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}   
+\usepackage[english, russian]{babel}
+
+% Set page size and margins
+% Replace `letterpaper' with`a4paper' for UK/EU standard size
+\usepackage[a4paper,top=2cm,bottom=2cm,left=2cm,right=2cm,marginparwidth=1.75cm]{geometry}
+
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+% \usepackage[left=1cm,right=1cm,top=1cm,bottom=1cm]{geometry}
+\usepackage{hyperref}
+\usepackage{seqsplit}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{enumitem}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{algorithmicx}
+\usepackage{mathalfa}
+\usepackage{mathrsfs}
+\usepackage{dsfont}
+\usepackage{caption,subcaption}
+\usepackage{wrapfig}
+\usepackage[stable]{footmisc}
+\usepackage{indentfirst}
+\usepackage{rotating}
+\usepackage{pdflscape}
+
+\usepackage{MnSymbol,wasysym}
+
+
+\begin{document}
+
+\title{\textbf{Основные алгоритмы. Домашняя работа 5 неделя}}
+
+
+\author{Зайнуллин Амир}
+\maketitle
+
+\section*{Задача №1}
+
+Пусть повторяющася строка выглядит следующий образом
+
+\begin{equation}
+     a_1 a_2 a_3 +...+ a_{n - 1} a_n a_1 a_2 a_3 +...+ a_{n - 1} a_{n} + ... 
+\end{equation}
+
+Понятно, что в данном случае ответом будет являться $n$. Пусть наша подстрока имеет вид:
+
+\begin{equation}
+    a_{l} a_{l + 1} a_{l + 2} + ... + a_{r - 1} a_{r} + ... + a_n a_1 a_2 + ... + a_{l - 1} a_{l} a_{l + 1} a_{l + 2} + ... + a_{r - 1} a_{r}
+\end{equation}
+
+Найдем префикс функцию для данной подстроки. Он будем иметь вид:
+
+\begin{equation}
+    0 z_{l + 1} z_{l + 2} + ... + z_{r - 1} z_{r} + ... + z_n z_1 z_2 + ... + z_{l - 1} x (x + 1) (x + 2) 3 + ... + (x + r - l) (x + r - l + 1)
+\end{equation}
+
+Начиная с момента, где стоит x, элементы префикс функции будут возрастать на единицу, потому что конец нового префикса будет совпадать с концом нового суффикса из за повторения символов (видно из (2)).
+То есть идя с конца, когда элементы перестанут уменьшаться на один, остановимся на x. Количество символов слева будет означать минимально возможную длину s. Проверим, что его длина будет действительно n. Это видно из формулы (3). Асимптотика алгоритма - O(n), тк префикс функция считается за линейное время.
+
+
+\section*{Задача №2}
+Пусть $v$ является циклическом сдвигом строки $u$.
+\begin{equation}
+    u = a_1 a_2 + ... + a_k a_{k + 1} + ... + a_{n - 1} + a_n
+\end{equation}
+
+\begin{equation}
+    v = a_k a_{k + 1} + ... + a_{n - 1} a_n a_1 a_2 + ... + a_{k - 2} a_{k - 1}
+\end{equation}
+
+Припишем к первой строке ее же саму, тогда 
+
+\begin{equation}
+    u_{new} = a_1 a_2 + ... a_k a_{k + 1} + ... + a_{n - 1} a_n  a_1 a_2 + ... + a_{k - 2} a_{k - 1} + ... + a_{n - 1} a_n
+\end{equation}
+
+Тогда, как видно из записи строк, если запустим алгоритм поиска подстроки $v$ в строке $u_{new}$ с помощью алгоритма КМП, получим индекс вхождения k. Если же $u$ не является циклическим сдвигом, КМП выдаст ответ, что не удалось найти подстроку $u$. Данный алгоритм линеен от длины строки.
+
+
+
+\end{document}

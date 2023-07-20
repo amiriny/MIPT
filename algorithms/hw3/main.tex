@@ -1,0 +1,65 @@
+\documentclass{article}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}   
+\usepackage[english, russian]{babel}
+
+% Set page size and margins
+% Replace `letterpaper' with`a4paper' for UK/EU standard size
+\usepackage[a4paper,top=2cm,bottom=2cm,left=2cm,right=2cm,marginparwidth=1.75cm]{geometry}
+
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+% \usepackage[left=1cm,right=1cm,top=1cm,bottom=1cm]{geometry}
+\usepackage{hyperref}
+\usepackage{seqsplit}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{enumitem}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{algorithmicx}
+\usepackage{mathalfa}
+\usepackage{mathrsfs}
+\usepackage{dsfont}
+\usepackage{caption,subcaption}
+\usepackage{wrapfig}
+\usepackage[stable]{footmisc}
+\usepackage{indentfirst}
+\usepackage{rotating}
+\usepackage{pdflscape}
+
+\usepackage{MnSymbol,wasysym}
+
+
+\begin{document}
+
+\title{\textbf{Основные алгоритмы. Домашняя работа 3-4 неделя}}
+\author{Зайнуллин Амир}
+\maketitle
+
+\section*{Задана №2}
+$$r_i =  \sum_{j=0}^{m-1} p_{j} t_{i+j}\left(p_{j}-t_{i+j}\right)^{2} = \sum_{j=0}^{m-1}\left(p_{j}^{3} t_{i+j}-2 p_{j}^{2} t_{i+j}^{2}+p_{j} t_{i+j}^{3}\right) $$
+
+
+Решение: 
+$\Rightarrow$
+
+Если образец входит в текст в позиции $i$, тогда слагаемое $p_{j} t_{i+j}\left(p_{j}-t_{i+j}\right)^{2}$ в каждой сумме равно 0.
+Если символы равны, то $\left(p_{j}-t_{i+j}\right)$ равно 0.Если один из символов джокер, то слагаемое тоже будет равно 0, потому что или $p_{j} = 0$ или $t_{i + j} = 0$. \\
+
+$\Leftarrow$
+
+Понятно, что каждое слагаемое в сумме положительно, т.к по условию $p_{j}$ и $t_{i+j}$ положительны. $\left(p_{j}-t_{i+j}\right)^{2}$ тоже положительно. 
+Тогда чтобы вся сумма равнялась 0, необходимо чтобы каждое слагаемое было равно 0. А это возможно только когда символы совпадают или один из символов джокер. То есть образец входит в текст. 
+
+Пункт 2:
+
+% Нам необходимо для каждого i от 0 до $n - m - 1$ посчитать сумму $ \sum_{j=0}^{m-1}\left(p_{j}^{3} t_{i+j}-2 p_{j}^{2} t_{i+j}^{2}+p_{j} t_{i+j}^{3}\right) $. Чтобы это сделать, рассмотрим перемножение двух полиномов.
+% $T(x) = t_{n - 1} x^{n - 1} + ... + t_1 x + t_0$ и $P(x) = p_0 x^{m - 1} + ... + p_{m - 2} x + p_{m - 1}$. Мы можем перемножить их за $O(nlogn)$
+
+
+$ \deltaA = p dV$
+
+\end{document}
